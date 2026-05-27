@@ -30,7 +30,12 @@ export default function Footer() {
                                 Whether it’s a Tuesday posy or a wedding eighteen months out, the
                                 studio diary is open.
                             </p>
-                            <a href="#contact" className="ft-btn ft-btn-primary">
+                            <a
+                                href="https://seojack.net/templates/tpl_florist_thornfield"
+                                target="_blank"
+                                rel="noopener"
+                                className="ft-btn ft-btn-primary"
+                            >
                                 Send an enquiry
                                 <ArrowRight size={16} strokeWidth={1.75} />
                             </a>

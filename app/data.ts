@@ -42,11 +42,24 @@ export const NAV_LINKS: { label: string; href: string }[] = [
 
 // ── Hero stat band ───────────────────────────────────────────────────────────
 
-export const HERO_STATS: { label: string; value: string; sub?: string }[] = [
-    { label: 'Established', value: '2014',  sub: 'New Town, Edinburgh' },
-    { label: 'Weddings a year', value: '60+', sub: 'across the Lothians' },
-    { label: 'Cut & sourced', value: 'Daily', sub: 'British growers first' },
-    { label: 'Studio counter', value: 'Tue–Sat', sub: '9am – 6pm' },
+/**
+ * `count` (optional) drives a scroll-triggered count-up on the numeric stats.
+ * When present, the Hero animates from 0 → count and renders `prefix`/`suffix`
+ * around it; `value` is the static fallback used for non-numeric stats and for
+ * reduced-motion users. `prefix`/`suffix` let "2014" and "60+" animate cleanly.
+ */
+export const HERO_STATS: {
+    label: string;
+    value: string;
+    sub?: string;
+    count?: number;
+    prefix?: string;
+    suffix?: string;
+}[] = [
+    { label: 'Established',     value: '2014',    sub: 'New Town, Edinburgh',  count: 2014 },
+    { label: 'Weddings a year', value: '60+',     sub: 'across the Lothians',  count: 60, suffix: '+' },
+    { label: 'Cut & sourced',   value: 'Daily',   sub: 'British growers first' },
+    { label: 'Studio counter',  value: 'Tue–Sat', sub: '9am – 6pm' },
 ];
 
 // ── Story / studio narrative ─────────────────────────────────────────────────
@@ -61,7 +74,7 @@ export const STORY = {
     signName: 'Fiona Thorngate',
     signRole: 'Founder',
     figureSrc:
-        'https://images.unsplash.com/photo-1561181286-d3fee7d55364?auto=format&fit=crop&w=1100&q=80',
+        'https://cdn.seojack.website/demos/florist-thornfield/story-florist-studio.avif',
     figureAlt: 'Fiona Thorngate arranging seasonal stems at Thornfield Florals studio, 14 Dundas Street New Town Edinburgh',
     figureCaption: '14 Dundas Street · New Town',
 } as const;
@@ -72,7 +85,7 @@ export const SPREAD = {
     eyebrow: 'Seasonal, not standardised',
     body: 'Stems are chosen the morning they are cut. British and Scottish stems, not Dutch auction — flowers that have rarely travelled more than a morning. No two Daily Posies are alike, and that is the whole point of a flower that was alive yesterday.',
     imageSrc:
-        'https://images.unsplash.com/photo-1487530811176-3780de880c2d?auto=format&fit=crop&w=2000&q=80',
+        'https://cdn.seojack.website/demos/florist-thornfield/spread-worktable-stems.avif',
     imageAlt: 'Hand-cut British seasonal flowers laid across the studio worktable at Thornfield Florals, Edinburgh',
     credit: 'Late summer, 2024 — studio archive',
 } as const;
@@ -92,21 +105,21 @@ export const TEAM: TeamMember[] = [
         name: 'Fiona Thorngate',
         role: 'Founder & Lead Designer',
         bio:  'Trained at the Dutch Flower School in Aalsmeer before returning to Edinburgh in 2014. Fiona leads all large event commissions and seasonal window installations.',
-        imageSrc: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=700&q=80',
+        imageSrc: 'https://cdn.seojack.website/demos/florist-thornfield/team-fiona-thorngate.avif',
         imageAlt: 'Fiona Thorngate, founder and lead florist, Thornfield Florals Edinburgh',
     },
     {
         name: 'Lewis Cairns',
         role: 'Senior Florist',
         bio:  'Specialises in structural, long-lived dried arrangements and the studio\'s weekday walk-in counter. Ten years in hospitality floristry before joining Thornfield in 2019.',
-        imageSrc: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=700&q=80',
+        imageSrc: 'https://cdn.seojack.website/demos/florist-thornfield/team-lewis-cairns.avif',
         imageAlt: 'Lewis Cairns, senior florist specialising in dried arrangements, Thornfield Florals Edinburgh',
     },
     {
         name: 'Orla Mackay',
         role: 'Studio & Events Manager',
         bio:  'Coordinates venue relationships across Lothian and the Borders, and manages the wedding consultation diary.',
-        imageSrc: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=700&q=80',
+        imageSrc: 'https://cdn.seojack.website/demos/florist-thornfield/team-orla-mackay.avif',
         imageAlt: 'Orla Mackay, studio and events manager coordinating weddings across Edinburgh and the Lothians',
     },
 ];
@@ -136,7 +149,7 @@ export const COLLECTIONS: Collection[] = [
         price:   'From £18',
         priceVal: 18,
         filter:  'year-round',
-        imageSrc: 'https://images.unsplash.com/photo-1519378058457-4c29a0a2efac?auto=format&fit=crop&w=900&q=80',
+        imageSrc: 'https://cdn.seojack.website/demos/florist-thornfield/collection-daily-posy.avif',
         imageAlt: 'Hand-tied seasonal flower posy from Thornfield Florals, Edinburgh florist',
     },
     {
@@ -147,7 +160,7 @@ export const COLLECTIONS: Collection[] = [
         price:   'From £65',
         priceVal: 65,
         filter:  'year-round',
-        imageSrc: 'https://images.unsplash.com/photo-1457089328109-e5d9bd499191?auto=format&fit=crop&w=900&q=80',
+        imageSrc: 'https://cdn.seojack.website/demos/florist-thornfield/collection-table-arrangements.avif',
         imageAlt: 'Low seasonal flower table arrangement for Edinburgh weddings and events by Thornfield Florals',
     },
     {
@@ -158,7 +171,7 @@ export const COLLECTIONS: Collection[] = [
         price:   'From £45',
         priceVal: 45,
         filter:  'seasonal',
-        imageSrc: 'https://images.unsplash.com/photo-1599733589046-75a93e003a85?auto=format&fit=crop&w=900&q=80',
+        imageSrc: 'https://cdn.seojack.website/demos/florist-thornfield/collection-late-summer.avif',
         imageAlt: 'Late summer dahlias and grasses seasonal arrangement, Edinburgh florist Thornfield Florals',
     },
     {
@@ -169,7 +182,7 @@ export const COLLECTIONS: Collection[] = [
         price:   'From £55',
         priceVal: 55,
         filter:  'dried',
-        imageSrc: 'https://images.unsplash.com/photo-1602241525823-0c61c1f6b1c4?auto=format&fit=crop&w=900&q=80',
+        imageSrc: 'https://cdn.seojack.website/demos/florist-thornfield/collection-dried-permanents.avif',
         imageAlt: 'Dried pampas and lunaria arrangement from Thornfield Florals, Edinburgh dried flower studio',
     },
 ];

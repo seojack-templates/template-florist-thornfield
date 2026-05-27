@@ -11,10 +11,21 @@
 import {
     useEffect,
     useRef,
+    useState,
     type CSSProperties,
     type ElementType,
     type ReactNode,
 } from 'react';
+
+// ---------------------------------------------------------------------------
+// prefersReducedMotion — single source of truth for motion gating in JS
+// ---------------------------------------------------------------------------
+
+/** True when the user has asked the OS to reduce motion. SSR-safe (false on server). */
+export function prefersReducedMotion(): boolean {
+    if (typeof window === 'undefined' || !window.matchMedia) return false;
+    return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+}
 
 // ---------------------------------------------------------------------------
 // initCursor
@@ -277,5 +288,75 @@ export function Marquee({ children, reverse = false, gap = 64, speed }: MarqueeP
                 </div>
             </div>
         </div>
+    );
+}
+
+// ---------------------------------------------------------------------------
+// CountUp
+// ---------------------------------------------------------------------------
+
+export interface CountUpProps {
+    /** Target value to count to. */
+    value: number;
+    /** Text rendered before the number (e.g. a currency mark). Default "". */
+    prefix?: string;
+    /** Text rendered after the number (e.g. "+"). Default "". */
+    suffix?: string;
+    /** Duration of the count in ms. Default 1400. */
+    duration?: number;
+    className?: string;
+}
+
+/**
+ * Counts from 0 up to `value` once the element first scrolls into view.
+ * Renders the final value immediately (no animation) when the user prefers
+ * reduced motion, so the number is always correct and never "stuck" at 0.
+ * The animated value is `aria-hidden`-adjacent: screen readers get the final
+ * value via the static fallback path, so no extra ARIA juggling is needed.
+ */
+export function CountUp({ value, prefix = '', suffix = '', duration = 1400, className }: CountUpProps) {
+    const ref = useRef<HTMLSpanElement>(null);
+    // Always start at 0 so server and first client render agree (no hydration
+    // mismatch). The effect immediately snaps to `value` for reduced-motion users.
+    const [display, setDisplay] = useState(0);
+
+    useEffect(() => {
+        const el = ref.current;
+        if (!el) return;
+        if (prefersReducedMotion()) {
+            setDisplay(value);
+            return;
+        }
+        let raf = 0;
+        let start = 0;
+        const ease = (t: number) => 1 - Math.pow(1 - t, 3); // easeOutCubic
+        const run = (now: number) => {
+            if (!start) start = now;
+            const p = Math.min(1, (now - start) / duration);
+            setDisplay(Math.round(ease(p) * value));
+            if (p < 1) raf = requestAnimationFrame(run);
+        };
+        const io = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    raf = requestAnimationFrame(run);
+                    io.disconnect();
+                }
+            },
+            { threshold: 0.4 }
+        );
+        io.observe(el);
+        return () => {
+            io.disconnect();
+            cancelAnimationFrame(raf);
+        };
+    }, [value, duration]);
+
+    return (
+        <span ref={ref} className={className}>
+            {prefix}
+            {display}
+            {suffix}
+        </span>
     );
 }

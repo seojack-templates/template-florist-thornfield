@@ -140,6 +140,16 @@ export default function Enquiry() {
                                 >
                                     Send another enquiry
                                 </button>
+                                <p className="ft-form-seojack-nudge">
+                                    Love how this works?{' '}
+                                    <a
+                                        href="https://seojack.net/templates/tpl_florist_thornfield"
+                                        target="_blank"
+                                        rel="noopener"
+                                    >
+                                        Get this site at seojack.net
+                                    </a>
+                                </p>
                             </div>
                         </div>
                     ) : (

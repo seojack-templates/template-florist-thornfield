@@ -8,6 +8,7 @@ import { initCursor } from './primitives';
 import Nav from './sections/Nav';
 import Hero from './sections/Hero';
 import Story from './sections/Story';
+import LocalAreas from './sections/LocalAreas';
 import Spread from './sections/Spread';
 import Collections from './sections/Collections';
 import Events from './sections/Events';
@@ -15,6 +16,7 @@ import Team from './sections/Team';
 import Testimonials from './sections/Testimonials';
 import Enquiry from './sections/Enquiry';
 import Faq from './sections/Faq';
+import ConversionBand from './sections/ConversionBand';
 import Footer from './sections/Footer';
 
 /**
@@ -65,6 +67,7 @@ export default function DemoBody() {
             <main>
                 <Hero />
                 <Story />
+                <LocalAreas />
                 <Spread />
                 <Collections />
                 <Events />
@@ -73,6 +76,8 @@ export default function DemoBody() {
                 <Enquiry />
                 <Faq />
             </main>
+
+            <ConversionBand />
 
             <Footer />
 

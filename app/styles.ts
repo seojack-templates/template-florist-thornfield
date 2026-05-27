@@ -275,6 +275,47 @@ export const FLORIST_THORNFIELD_CSS = `
   transform: translateY(0);
 }
 
+/* ── Media reveal — images settle from a soft fade + slight rise/scale ───
+   Keyed off the shared .reveal/.in machinery so it staggers with everything
+   else. The image itself starts a touch larger; once its wrapper enters view
+   it eases to rest. The hover-zoom rules below re-assert transform on hover. */
+.florist-thornfield-demo .ft-story-figure img,
+.florist-thornfield-demo .ft-team-img img,
+.florist-thornfield-demo .ft-collection-img img {
+  opacity: 0;
+  transform: scale(1.04);
+  transition: opacity 0.85s var(--ease-standard),
+              transform 0.85s var(--ease-standard),
+              filter 500ms var(--ease-standard);
+}
+.florist-thornfield-demo .reveal.in .ft-story-figure img,
+.florist-thornfield-demo .ft-story-figure.reveal.in img,
+.florist-thornfield-demo .reveal.in .ft-team-img img,
+.florist-thornfield-demo .ft-team-card.reveal.in .ft-team-img img,
+.florist-thornfield-demo .reveal.in .ft-collection-img img,
+.florist-thornfield-demo .ft-collection.reveal.in .ft-collection-img img {
+  opacity: 1;
+  transform: scale(1);
+}
+/* Re-assert hover zoom (and the team grayscale lift) above the reveal rest state */
+.florist-thornfield-demo .ft-collection:hover .ft-collection-img img { transform: scale(1.04); }
+.florist-thornfield-demo .ft-team-card:hover .ft-team-img img { filter: grayscale(0); transform: scale(1.03); }
+
+/* Full-bleed spread image — clip-reveals upward once scrolled into view */
+.florist-thornfield-demo .ft-spread img {
+  clip-path: inset(0 0 12% 0);
+  transform: scale(1.06);
+  opacity: 0.65;
+  transition: clip-path 1s var(--ease-standard),
+              transform 1s var(--ease-standard),
+              opacity 0.9s var(--ease-standard);
+}
+.florist-thornfield-demo .ft-spread.is-in img {
+  clip-path: inset(0 0 0 0);
+  transform: scale(1);
+  opacity: 1;
+}
+
 /* .marquee — horizontal scroll strip */
 .florist-thornfield-demo .marquee {
   display:   flex;
@@ -590,6 +631,43 @@ export const FLORIST_THORNFIELD_CSS = `
 
 @media (max-width: 859px) {
   .florist-thornfield-demo .ft-story-grid { grid-template-columns: 1fr; gap: 36px; }
+}
+
+/* ── LOCAL AREAS BAND ────────────────────────────────────────────────── */
+.florist-thornfield-demo .ft-areas {
+  padding-top:    clamp(40px, 6vw, 72px);
+  padding-bottom: clamp(40px, 6vw, 72px);
+  border-top:    1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.florist-thornfield-demo .ft-areas-label {
+  display: block;
+  margin-bottom: var(--space-6);
+}
+.florist-thornfield-demo .ft-areas-marquee {
+  /* soft edge mask so the strip dissolves into the canvas rather than clipping */
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 9%, #000 91%, transparent);
+          mask-image: linear-gradient(to right, transparent, #000 9%, #000 91%, transparent);
+}
+.florist-thornfield-demo .ft-areas-item {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(1.6rem, 3.4vw, 2.6rem);
+  line-height: 1;
+  color: var(--fg);
+  letter-spacing: -0.01em;
+  padding-right: clamp(28px, 4vw, 56px);
+  white-space: nowrap;
+}
+.florist-thornfield-demo .ft-areas-mark {
+  color: var(--accent);
+  font-size: 0.4em;
+  font-style: normal;
+  margin-right: clamp(28px, 4vw, 56px);
+  transform: translateY(-0.18em);
 }
 
 /* ── FULL-BLEED EDITORIAL SPREAD (the memorable element) ─────────────── */
@@ -1241,6 +1319,154 @@ export const FLORIST_THORNFIELD_CSS = `
   .florist-thornfield-demo .ft-footer-top { grid-template-columns: 1fr; }
 }
 
+/* ── NAV SEOJACK LOCKUP ──────────────────────────────────────────────── */
+/* Hidden over the transparent pre-scroll nav; fades in (with a small drift)
+   once the nav condenses on scroll, so it reads as part of the settled chrome
+   rather than competing with the hero. */
+.florist-thornfield-demo .ft-nav-seojack {
+  display:        inline-flex;
+  align-items:    center;
+  gap:            6px;
+  text-decoration: none;
+  opacity:        0;
+  transform:      translateY(-4px);
+  pointer-events: none;
+  transition:     opacity var(--motion-base) var(--ease-standard),
+                  transform var(--motion-base) var(--ease-standard);
+  margin-right:   var(--space-3);
+}
+.florist-thornfield-demo .ft-nav-seojack.is-revealed {
+  opacity:        0.72;
+  transform:      translateY(0);
+  pointer-events: auto;
+}
+.florist-thornfield-demo .ft-nav-seojack.is-revealed:hover {
+  opacity:    1;
+  background: none;
+}
+.florist-thornfield-demo .ft-nav-seojack-label {
+  font-family:    var(--font-body);
+  font-size:      11px;
+  font-weight:    500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color:          var(--muted);
+  white-space:    nowrap;
+}
+.florist-thornfield-demo .ft-nav-seojack-logo {
+  height:     18px;
+  width:      auto;
+  display:    block;
+  object-fit: contain;
+}
+@media (max-width: 1023px) {
+  .florist-thornfield-demo .ft-nav-seojack { display: none; }
+}
+
+/* ── CONVERSION BAND ─────────────────────────────────────────────────── */
+.florist-thornfield-demo .ft-conversion-band {
+  background:    var(--surface-warm);
+  border-top:    1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.florist-thornfield-demo .ft-conversion-band-inner {
+  padding-top:    clamp(56px, 8vw, 100px);
+  padding-bottom: clamp(56px, 8vw, 100px);
+  display:        grid;
+  grid-template-columns: auto 1fr auto;
+  gap:            clamp(32px, 5vw, 72px);
+  align-items:    center;
+}
+.florist-thornfield-demo .ft-conversion-band-logo-link {
+  text-decoration: none;
+  display:         block;
+  flex-shrink:     0;
+}
+.florist-thornfield-demo .ft-conversion-band-logo-link:hover { background: none; }
+.florist-thornfield-demo .ft-conversion-band-logo {
+  height:     28px;
+  width:      auto;
+  display:    block;
+  object-fit: contain;
+  opacity:    0.85;
+  transition: opacity var(--motion-fast) var(--ease-standard);
+}
+.florist-thornfield-demo .ft-conversion-band-logo-link:hover .ft-conversion-band-logo {
+  opacity: 1;
+}
+.florist-thornfield-demo .ft-conversion-band-copy { min-width: 0; }
+.florist-thornfield-demo .ft-conversion-band-heading {
+  font-family:    var(--font-display);
+  font-weight:    400;
+  font-size:      clamp(1.8rem, 3.8vw, 3.2rem);
+  letter-spacing: var(--tracking-display);
+  color:          var(--fg);
+  line-height:    1.06;
+  margin:         0;
+}
+/* mask-line needs a touch of vertical room so descenders (the "y" in "yours")
+   are not clipped while the line slides up into place */
+.florist-thornfield-demo .ft-conversion-band-heading .mask-line {
+  padding-bottom: 0.08em;
+}
+.florist-thornfield-demo .ft-conversion-band-sub {
+  font-size:  var(--text-base);
+  color:      var(--fg-2);
+  margin-top: var(--space-3);
+  max-width:  52ch;
+}
+.florist-thornfield-demo .ft-conversion-band-cta { flex-shrink: 0; }
+/* the Magnetic wrapper is an inline-block span; keep it from breaking layout */
+.florist-thornfield-demo .ft-conversion-band-cta .magnet { display: inline-flex; }
+.florist-thornfield-demo .ft-conversion-band-btn {
+  white-space: nowrap;
+  /* add transform to the inherited transition list so the lift/scale eases */
+  transition: background var(--motion-fast) var(--ease-standard),
+              color      var(--motion-fast) var(--ease-standard),
+              box-shadow var(--motion-fast) var(--ease-standard),
+              transform  var(--motion-base) var(--ease-standard);
+}
+.florist-thornfield-demo .ft-conversion-band-btn:hover {
+  transform: scale(1.035);
+}
+.florist-thornfield-demo .ft-conversion-band-btn:active {
+  transform: scale(0.985);
+  transition-duration: var(--motion-fast);
+}
+.florist-thornfield-demo .ft-conversion-band-btn .lucide {
+  transition: transform var(--motion-base) var(--ease-standard);
+}
+.florist-thornfield-demo .ft-conversion-band-btn:hover .lucide {
+  transform: translateX(3px);
+}
+
+@media (max-width: 859px) {
+  .florist-thornfield-demo .ft-conversion-band-inner {
+    grid-template-columns: 1fr;
+    gap:                   var(--space-8);
+  }
+  .florist-thornfield-demo .ft-conversion-band-logo { height: 22px; }
+}
+
+/* ── FORM SUCCESS SEOJack NUDGE ───────────────────────────────────────── */
+.florist-thornfield-demo .ft-form-seojack-nudge {
+  margin-top:  var(--space-6);
+  font-size:   var(--text-sm);
+  color:       var(--muted);
+  border-top:  1px solid var(--border-soft);
+  padding-top: var(--space-4);
+  max-width:   none;
+}
+.florist-thornfield-demo .ft-form-seojack-nudge a {
+  color:           var(--accent);
+  text-decoration: none;
+  font-weight:     500;
+}
+.florist-thornfield-demo .ft-form-seojack-nudge a:hover {
+  background: none;
+  text-decoration: underline;
+}
+
 /* ── reveal stagger via data-delay ───────────────────────────────────── */
 .florist-thornfield-demo .reveal[data-delay="1"] { transition-delay: 80ms; }
 .florist-thornfield-demo .reveal[data-delay="2"] { transition-delay: 160ms; }
@@ -1256,5 +1482,29 @@ export const FLORIST_THORNFIELD_CSS = `
   .florist-thornfield-demo .reveal,
   .florist-thornfield-demo .mask-line > span { transition: none !important; transform: none !important; opacity: 1 !important; }
   .florist-thornfield-demo .marquee-track { animation: none !important; }
+
+  /* Media reveals settle to their final state instantly */
+  .florist-thornfield-demo .ft-story-figure img,
+  .florist-thornfield-demo .ft-team-img img,
+  .florist-thornfield-demo .ft-collection-img img,
+  .florist-thornfield-demo .ft-spread img {
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
+    transition: none !important;
+  }
+
+  /* Nav lockup is simply present (no fade/drift), CTA micro-interactions stilled */
+  .florist-thornfield-demo .ft-nav-seojack {
+    transition: none !important;
+    transform: none !important;
+  }
+  .florist-thornfield-demo .ft-conversion-band-btn,
+  .florist-thornfield-demo .ft-conversion-band-btn .lucide,
+  .florist-thornfield-demo .magnet,
+  .florist-thornfield-demo .magnet > * {
+    transition: none !important;
+    transform: none !important;
+  }
 }
 `;

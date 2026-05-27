@@ -1,7 +1,7 @@
 'use client';
 
 import { ArrowDownRight } from 'lucide-react';
-import { Headline, Reveal } from '../primitives';
+import { CountUp, Headline, Reveal } from '../primitives';
 import { HERO_STATS } from '../data';
 
 export default function Hero() {
@@ -44,7 +44,11 @@ export default function Hero() {
                     <div key={s.label}>
                         <dt>{s.label}</dt>
                         <dd className="ft-numeral">
-                            {s.value}
+                            {s.count != null ? (
+                                <CountUp value={s.count} prefix={s.prefix} suffix={s.suffix} />
+                            ) : (
+                                s.value
+                            )}
                             {s.sub && <span>{s.sub}</span>}
                         </dd>
                     </div>

@@ -36,7 +36,30 @@ export default function Nav() {
                         </ul>
                     </nav>
 
-                    <a href="#contact" className="ft-btn ft-btn-primary ft-nav-cta">
+                    {/* SEOJack "Built with" lockup — fades in once the nav condenses on scroll */}
+                    <a
+                        href="https://seojack.net/templates"
+                        target="_blank"
+                        rel="noopener"
+                        className={`ft-nav-seojack${scrolled ? ' is-revealed' : ''}`}
+                        aria-label="Built with SEOJack"
+                    >
+                        <span className="ft-nav-seojack-label">Built with</span>
+                        <img
+                            src="https://cdn.seojack.website/brand/seojack-logo.avif?v=3"
+                            alt="SEOJack"
+                            className="ft-nav-seojack-logo"
+                            width={384}
+                            height={67}
+                        />
+                    </a>
+
+                    <a
+                        href="https://seojack.net/templates/tpl_florist_thornfield"
+                        target="_blank"
+                        rel="noopener"
+                        className="ft-btn ft-btn-primary ft-nav-cta"
+                    >
                         Enquire
                     </a>
 

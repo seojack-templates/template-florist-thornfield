@@ -24,7 +24,12 @@ export default function Events() {
                         everything that stands in a vessel.
                     </Reveal>
                     <Reveal delay={3}>
-                        <a href="#contact" className="ft-btn ft-btn-primary">
+                        <a
+                            href="https://seojack.net/templates/tpl_florist_thornfield"
+                            target="_blank"
+                            rel="noopener"
+                            className="ft-btn ft-btn-primary"
+                        >
                             Request a consultation
                         </a>
                     </Reveal>
