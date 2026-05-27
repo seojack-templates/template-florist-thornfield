@@ -3,6 +3,6 @@ import type { MetadataRoute } from 'next';
 export default function robots(): MetadataRoute.Robots {
     return {
         rules: { userAgent: '*', allow: '/' },
-        sitemap: 'https://florist-thornfield.templates.seojack.website/sitemap.xml',
+        sitemap: 'https://template-florist-thornfield.seojack.site/sitemap.xml',
     };
 }
