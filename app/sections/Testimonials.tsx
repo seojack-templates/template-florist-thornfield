@@ -27,7 +27,7 @@ export default function Testimonials() {
         <section id="testimonials" className="ft-section ft-testimonials">
             <div className="ft-container">
                 <Reveal as="span" className="ft-eyebrow">
-                    In their words
+                    What Edinburgh Couples &amp; Clients Say
                 </Reveal>
                 <Reveal as="h2" delay={1} style={{ marginTop: '1rem', maxWidth: '14ch' }}>
                     The flowers people still mention.

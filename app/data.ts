@@ -20,6 +20,17 @@ export const META = {
     instagram:   '@thornfieldflorals',
 } as const;
 
+// ── Local areas served ────────────────────────────────────────────────────────
+
+export const LOCAL_AREAS: string[] = [
+    'New Town, Edinburgh',
+    'Stockbridge, Edinburgh',
+    'Leith, Edinburgh',
+    'Morningside, Edinburgh',
+    'Musselburgh, East Lothian',
+    'Peebles, Scottish Borders',
+];
+
 // ── Navigation ─────────────────────────────────────────────────────────────────
 
 export const NAV_LINKS: { label: string; href: string }[] = [
@@ -45,13 +56,13 @@ export const STORY = {
     heading: 'A small studio with a long view of the season.',
     body: [
         'Thornfield began in 2014 as a single bucket of ranunculus on a Dundas Street windowsill. A decade on, we are a working studio of three, still arranging everything by hand and still buying first from Scottish and British growers before the Dutch auction.',
-        'We keep the palette quiet and the gestures deliberate. A Thornfield arrangement should look as though it was gathered on a walk and set down without fuss — even when it took the better part of a morning to make it look that easy.',
+        'We keep the palette quiet and the gestures deliberate. A Thornfield arrangement should look as though it was gathered on a walk and set down without fuss — even when it took the better part of a morning to make it look that easy. From our Edinburgh New Town studio we work across the city and out to the Lothians.',
     ],
     signName: 'Fiona Thorngate',
     signRole: 'Founder',
     figureSrc:
         'https://images.unsplash.com/photo-1561181286-d3fee7d55364?auto=format&fit=crop&w=1100&q=80',
-    figureAlt: 'Florist arranging seasonal stems at a studio bench',
+    figureAlt: 'Fiona Thorngate arranging seasonal stems at Thornfield Florals studio, 14 Dundas Street New Town Edinburgh',
     figureCaption: '14 Dundas Street · New Town',
 } as const;
 
@@ -59,10 +70,10 @@ export const STORY = {
 
 export const SPREAD = {
     eyebrow: 'Seasonal, not standardised',
-    body: 'Stems are chosen the morning they are cut. No two Daily Posies are alike, and that is the whole point of a flower that was alive yesterday.',
+    body: 'Stems are chosen the morning they are cut. British and Scottish stems, not Dutch auction — flowers that have rarely travelled more than a morning. No two Daily Posies are alike, and that is the whole point of a flower that was alive yesterday.',
     imageSrc:
         'https://images.unsplash.com/photo-1487530811176-3780de880c2d?auto=format&fit=crop&w=2000&q=80',
-    imageAlt: 'A wide editorial spread of freshly cut seasonal flowers laid across a worktable',
+    imageAlt: 'Hand-cut British seasonal flowers laid across the studio worktable at Thornfield Florals, Edinburgh',
     credit: 'Late summer, 2024 — studio archive',
 } as const;
 
@@ -73,6 +84,7 @@ export interface TeamMember {
     role:     string;
     bio:      string;
     imageSrc: string;
+    imageAlt: string;
 }
 
 export const TEAM: TeamMember[] = [
@@ -81,18 +93,21 @@ export const TEAM: TeamMember[] = [
         role: 'Founder & Lead Designer',
         bio:  'Trained at the Dutch Flower School in Aalsmeer before returning to Edinburgh in 2014. Fiona leads all large event commissions and seasonal window installations.',
         imageSrc: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=700&q=80',
+        imageAlt: 'Fiona Thorngate, founder and lead florist, Thornfield Florals Edinburgh',
     },
     {
         name: 'Lewis Cairns',
         role: 'Senior Florist',
         bio:  'Specialises in structural, long-lived dried arrangements and the studio\'s weekday walk-in counter. Ten years in hospitality floristry before joining Thornfield in 2019.',
         imageSrc: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=700&q=80',
+        imageAlt: 'Lewis Cairns, senior florist specialising in dried arrangements, Thornfield Florals Edinburgh',
     },
     {
         name: 'Orla Mackay',
         role: 'Studio & Events Manager',
         bio:  'Coordinates venue relationships across Lothian and the Borders, and manages the wedding consultation diary.',
         imageSrc: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=700&q=80',
+        imageAlt: 'Orla Mackay, studio and events manager coordinating weddings across Edinburgh and the Lothians',
     },
 ];
 
@@ -122,7 +137,7 @@ export const COLLECTIONS: Collection[] = [
         priceVal: 18,
         filter:  'year-round',
         imageSrc: 'https://images.unsplash.com/photo-1519378058457-4c29a0a2efac?auto=format&fit=crop&w=900&q=80',
-        imageAlt: 'A loosely hand-tied posy of seasonal stems',
+        imageAlt: 'Hand-tied seasonal flower posy from Thornfield Florals, Edinburgh florist',
     },
     {
         slug:    'table-arrangements',
@@ -133,7 +148,7 @@ export const COLLECTIONS: Collection[] = [
         priceVal: 65,
         filter:  'year-round',
         imageSrc: 'https://images.unsplash.com/photo-1457089328109-e5d9bd499191?auto=format&fit=crop&w=900&q=80',
-        imageAlt: 'A low table arrangement set for a dinner',
+        imageAlt: 'Low seasonal flower table arrangement for Edinburgh weddings and events by Thornfield Florals',
     },
     {
         slug:    'late-summer-studio',
@@ -144,7 +159,7 @@ export const COLLECTIONS: Collection[] = [
         priceVal: 45,
         filter:  'seasonal',
         imageSrc: 'https://images.unsplash.com/photo-1599733589046-75a93e003a85?auto=format&fit=crop&w=900&q=80',
-        imageAlt: 'Warm-toned late summer dahlias and grasses',
+        imageAlt: 'Late summer dahlias and grasses seasonal arrangement, Edinburgh florist Thornfield Florals',
     },
     {
         slug:    'dried-permanents',
@@ -155,7 +170,7 @@ export const COLLECTIONS: Collection[] = [
         priceVal: 55,
         filter:  'dried',
         imageSrc: 'https://images.unsplash.com/photo-1602241525823-0c61c1f6b1c4?auto=format&fit=crop&w=900&q=80',
-        imageAlt: 'A textural dried arrangement of pampas and lunaria',
+        imageAlt: 'Dried pampas and lunaria arrangement from Thornfield Florals, Edinburgh dried flower studio',
     },
 ];
 
@@ -185,7 +200,7 @@ export const EVENT_SERVICES: EventService[] = [
     {
         id:          'corporate',
         title:       'Corporate & Hospitality',
-        description: 'Standing weekly or monthly subscriptions for reception desks, dining rooms, and boardrooms across Edinburgh and the Lothians.',
+        description: 'Standing weekly or monthly subscriptions for reception desks, dining rooms, and boardrooms across Edinburgh\'s New Town, Stockbridge, Morningside, Leith, and the wider Lothians.',
         typical:     'Weekly from £75 per location',
     },
     {
@@ -229,7 +244,7 @@ export const CONTACT = {
     subheading:  'For event enquiries, consultations, or same-day orders, get in touch below or call the studio.',
     ctaLabel:    'Send an enquiry',
     ctaHref:     'mailto:hello@thornfieldflorals.co.uk',
-    mapEmbed:    '', // populated by builder with Google Maps embed URL
+    mapEmbed:    'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2233.9!2d-3.1986!3d55.9583!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4887c79a4b4b1a1b%3A0x1!2s14+Dundas+Street%2C+Edinburgh+EH3+6JN!5e0!3m2!1sen!2suk!4v1700000000000',
 } as const;
 
 // ── Enquiry form options ──────────────────────────────────────────────────────
@@ -258,11 +273,11 @@ export interface FAQItem {
 export const FAQS: FAQItem[] = [
     {
         q: 'Do you deliver across Edinburgh?',
-        a: 'Yes. We deliver within Edinburgh and the surrounding EH postcodes daily, Tuesday to Saturday. Orders placed before 11 am are usually delivered the same afternoon; we also reach venues across the Lothians and the Borders for events.',
+        a: 'Yes. We deliver within Edinburgh and the surrounding EH postcodes daily, Tuesday to Saturday, including Stockbridge, Leith, Morningside, and the Lothians. Orders placed before 11 am are usually delivered the same afternoon; we also reach venues across the Lothians and the Borders for events.',
     },
     {
         q: 'How far in advance should I book wedding flowers?',
-        a: 'We take a limited number of weddings each month so that every couple gets Fiona’s attention. Most book six to twelve months ahead, though we can occasionally accommodate shorter timelines — it is always worth asking.',
+        a: "We take a limited number of weddings each month so that every couple gets Fiona's attention. Most book six to twelve months ahead, though we can occasionally accommodate shorter timelines — it is always worth asking.",
     },
     {
         q: 'Can I order without choosing specific flowers?',
@@ -300,7 +315,7 @@ export const FOOTER_COLS: { heading: string; links: { label: string; href: strin
             { label: '14 Dundas Street', href: '#contact' },
             { label: 'Edinburgh EH3 6JN', href: '#contact' },
             { label: 'Tue – Sat, 9–6',   href: '#contact' },
-            { label: 'Get directions',   href: '#contact' },
+            { label: 'Get directions',   href: 'https://maps.google.com/?q=14+Dundas+Street+Edinburgh+EH3+6JN' },
         ],
     },
     {
@@ -309,7 +324,7 @@ export const FOOTER_COLS: { heading: string; links: { label: string; href: strin
             { label: 'Enquire',          href: '#contact' },
             { label: '+44 131 556 0247', href: 'tel:+441315560247' },
             { label: 'Email the studio', href: 'mailto:hello@thornfieldflorals.co.uk' },
-            { label: '@thornfieldflorals', href: '#' },
+            { label: '@thornfieldflorals', href: 'https://www.instagram.com/thornfieldflorals' },
         ],
     },
 ];

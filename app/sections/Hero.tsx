@@ -24,7 +24,8 @@ export default function Hero() {
                 <div className="ft-hero-aside">
                     <Reveal as="p" delay={2}>
                         Seasonal arrangements and event flowers, made by hand in the New Town and
-                        designed with a restrained, deliberate eye.
+                        designed with a restrained, deliberate eye. Delivering across Edinburgh —
+                        New Town, Stockbridge, Leith, Morningside — and out to the Lothians and Borders.
                     </Reveal>
                     <Reveal className="ft-hero-ctas" delay={3}>
                         <a href="#collections" className="ft-btn ft-btn-primary">

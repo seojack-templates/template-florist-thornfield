@@ -13,7 +13,7 @@ export default function Events() {
             <div className="ft-container ft-events-grid">
                 <div className="ft-events-aside">
                     <Reveal as="span" className="ft-eyebrow ft-eyebrow--accent" style={{ marginBottom: '1.2rem' }}>
-                        Event flowers
+                        Wedding &amp; Event Florist Edinburgh
                     </Reveal>
                     <Reveal as="h2" delay={1}>
                         From a single dinner to a full wedding day.

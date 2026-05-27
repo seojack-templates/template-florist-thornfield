@@ -31,7 +31,7 @@ export default function Collections() {
             <div className="ft-section-head">
                 <div>
                     <Reveal as="span" className="ft-eyebrow ft-eyebrow--accent">
-                        Seasonal collections
+                        Seasonal Flower Collections — Edinburgh Studio
                     </Reveal>
                     <Reveal as="h2" delay={1} style={{ marginTop: '1rem' }}>
                         Made to the day, not to a catalogue.

@@ -70,7 +70,7 @@ export default function Enquiry() {
             <div className="ft-enquiry-grid">
                 <div className="ft-enquiry-intro">
                     <Reveal as="span" className="ft-eyebrow ft-eyebrow--accent" style={{ marginBottom: '1.2rem' }}>
-                        Start a conversation
+                        Edinburgh floral studio enquiries &amp; wedding consultations
                     </Reveal>
                     <Reveal as="h2" delay={1}>
                         Tell us about the occasion.

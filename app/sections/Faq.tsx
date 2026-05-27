@@ -9,18 +9,18 @@ export default function Faq() {
     const [open, setOpen] = useState<number | null>(0);
 
     return (
-        <section className="ft-section ft-container">
+        <section id="faq" className="ft-section ft-container">
             <div className="ft-faq-grid">
                 <div>
                     <Reveal as="span" className="ft-eyebrow ft-eyebrow--accent" style={{ marginBottom: '1.2rem' }}>
                         Good to know
                     </Reveal>
                     <Reveal as="h2" delay={1}>
-                        Questions we’re often asked.
+                        Frequently asked questions &mdash; Edinburgh florist
                     </Reveal>
                     <Reveal as="p" delay={2} style={{ marginTop: '1.4rem' }}>
                         Still unsure of something? Call the studio on{' '}
-                        <a href="tel:+441315560247">+44 131 556 0247</a> — we’d rather talk it through.
+                        <a href="tel:+441315560247">+44 131 556 0247</a> &mdash; we&apos;d rather talk it through.
                     </Reveal>
                 </div>
 
