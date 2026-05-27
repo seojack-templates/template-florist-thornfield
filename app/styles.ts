@@ -343,8 +343,10 @@ export const FLORIST_THORNFIELD_CSS = `
   background:     var(--accent);
   pointer-events: none;
   z-index:        9999;
+  opacity:        0;
   transform:      translate(-50%, -50%);
-  transition:     transform 80ms var(--ease-standard);
+  transition:     transform 80ms var(--ease-standard),
+                  opacity 240ms var(--ease-standard);
 }
 .florist-thornfield-demo .cursor-ring {
   position:       fixed;
@@ -354,10 +356,12 @@ export const FLORIST_THORNFIELD_CSS = `
   border:         1.5px solid var(--accent);
   pointer-events: none;
   z-index:        9998;
+  opacity:        0;
   transform:      translate(-50%, -50%);
   transition:     transform 220ms var(--ease-standard),
                   width 220ms var(--ease-standard),
-                  height 220ms var(--ease-standard);
+                  height 220ms var(--ease-standard),
+                  opacity 240ms var(--ease-standard);
 }
 
 /* ── Link style ──────────────────────────────────────────────────────── */
@@ -510,33 +514,41 @@ export const FLORIST_THORNFIELD_CSS = `
 
 /* ── HERO ────────────────────────────────────────────────────────────── */
 .florist-thornfield-demo .ft-hero {
-  padding-top: 168px;
-  padding-bottom: 96px;
+  padding-top: 150px;
+  padding-bottom: 84px;
   position: relative;
 }
 .florist-thornfield-demo .ft-hero-grid {
   display: grid;
-  grid-template-columns: 1.55fr 1fr;
-  gap: clamp(32px, 5vw, 72px);
-  align-items: end;
+  grid-template-columns: 1.02fr 0.98fr;
+  gap: clamp(36px, 5vw, 80px);
+  align-items: center;
+}
+.florist-thornfield-demo .ft-hero-copy {
+  padding-bottom: 4px;
 }
 .florist-thornfield-demo .ft-hero h1 {
-  font-size: clamp(3rem, 7.2vw, 6.4rem);
-  line-height: 0.98;
-  letter-spacing: -0.025em;
-  max-width: 13ch;
+  font-size: clamp(2.9rem, 6vw, 5.6rem);
+  line-height: 0.96;
+  letter-spacing: -0.028em;
+  margin-top: 0.2rem;
+}
+/* Each headline line sits on its own row at every width — keeps the three
+   masked lines from butting together (e.g. "consideredoccasion.") when they
+   would otherwise share a row on narrow viewports. */
+.florist-thornfield-demo .ft-hero h1 .mask-line {
+  display: block;
 }
 .florist-thornfield-demo .ft-hero h1 em {
   font-style: italic;
   font-weight: 300;
+  color: var(--accent);
 }
-.florist-thornfield-demo .ft-hero-aside {
-  padding-bottom: 8px;
-}
-.florist-thornfield-demo .ft-hero-aside p {
+.florist-thornfield-demo .ft-hero-lead {
+  margin-top: var(--space-6);
   font-size: var(--text-lg);
   color: var(--fg-2);
-  max-width: 34ch;
+  max-width: 40ch;
 }
 .florist-thornfield-demo .ft-hero-ctas {
   margin-top: var(--space-8);
@@ -544,8 +556,71 @@ export const FLORIST_THORNFIELD_CSS = `
   gap: var(--space-3);
   flex-wrap: wrap;
 }
+
+/* Hero figure — the large image that anchors the section */
+.florist-thornfield-demo .ft-hero-figure {
+  position: relative;
+}
+.florist-thornfield-demo .ft-hero-figure-frame {
+  position: relative;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--elev-ring), var(--elev-raised);
+  aspect-ratio: 4 / 5;
+  background: var(--surface-warm);
+}
+.florist-thornfield-demo .ft-hero-figure-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 38%;
+  display: block;
+  transform: scale(1.02);
+  transition: transform 900ms var(--ease-standard);
+}
+.florist-thornfield-demo .ft-hero-figure.in .ft-hero-figure-frame img {
+  transform: scale(1);
+}
+.florist-thornfield-demo .ft-hero-figure-tag {
+  position: absolute;
+  left: 16px;
+  bottom: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px 10px 13px;
+  background: rgba(250, 248, 244, 0.86);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-pill);
+  box-shadow: 0 8px 24px rgba(28, 27, 25, 0.10);
+}
+.florist-thornfield-demo .ft-hero-figure-tag-mark {
+  width: 8px;
+  height: 8px;
+  flex: none;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 4px rgba(160, 106, 59, 0.16);
+}
+.florist-thornfield-demo .ft-hero-figure-tag > span:last-child {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--fg);
+  letter-spacing: 0.01em;
+}
+.florist-thornfield-demo .ft-hero-figure-tag em {
+  font-style: normal;
+  font-size: var(--text-xs);
+  font-weight: 400;
+  color: var(--muted);
+}
 .florist-thornfield-demo .ft-hero-meta {
-  margin-top: clamp(48px, 7vw, 92px);
+  margin-top: clamp(44px, 6vw, 84px);
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: var(--space-6);
@@ -576,8 +651,12 @@ export const FLORIST_THORNFIELD_CSS = `
 }
 
 @media (max-width: 859px) {
-  .florist-thornfield-demo .ft-hero { padding-top: 132px; }
-  .florist-thornfield-demo .ft-hero-grid { grid-template-columns: 1fr; gap: 32px; align-items: start; }
+  .florist-thornfield-demo .ft-hero { padding-top: 124px; }
+  .florist-thornfield-demo .ft-hero-grid { grid-template-columns: 1fr; gap: 36px; align-items: start; }
+  .florist-thornfield-demo .ft-hero h1 { font-size: clamp(2.9rem, 13vw, 4.4rem); }
+  .florist-thornfield-demo .ft-hero-lead { max-width: 46ch; }
+  .florist-thornfield-demo .ft-hero-figure-frame { aspect-ratio: 5 / 4; }
+  .florist-thornfield-demo .ft-hero-figure-frame img { object-position: 50% 34%; }
   .florist-thornfield-demo .ft-hero-meta { grid-template-columns: repeat(2, 1fr); gap: var(--space-6) var(--space-4); }
 }
 
@@ -1487,6 +1566,7 @@ export const FLORIST_THORNFIELD_CSS = `
   .florist-thornfield-demo .ft-story-figure img,
   .florist-thornfield-demo .ft-team-img img,
   .florist-thornfield-demo .ft-collection-img img,
+  .florist-thornfield-demo .ft-hero-figure-frame img,
   .florist-thornfield-demo .ft-spread img {
     opacity: 1 !important;
     transform: none !important;

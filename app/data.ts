@@ -40,6 +40,15 @@ export const NAV_LINKS: { label: string; href: string }[] = [
     { label: 'Journal',     href: '#testimonials' },
 ];
 
+// ── Hero ───────────────────────────────────────────────────────────────────
+
+export const HERO = {
+    imageSrc:   'https://cdn.seojack.website/demos/florist-thornfield/hero-arrangement.avif',
+    imageAlt:   'Seasonal bronze and blush flower arrangement in a fluted ceramic vase at Thornfield Florals, the Edinburgh New Town florist studio',
+    caption:    'New Town studio',
+    captionSub: 'Seasonal, cut this morning',
+} as const;
+
 // ── Hero stat band ───────────────────────────────────────────────────────────
 
 /**

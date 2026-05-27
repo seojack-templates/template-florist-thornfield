@@ -53,6 +53,10 @@ export function initCursor(root: HTMLElement): () => void {
     const onMove = (e: MouseEvent) => {
         mx = e.clientX;
         my = e.clientY;
+        // Reveal on first pointer movement (cursor starts hidden via CSS opacity:0
+        // so it never appears parked at viewport-centre on load / in screenshots).
+        if (dot.style.opacity !== '1') dot.style.opacity = '1';
+        if (ring.style.opacity !== '1') ring.style.opacity = '1';
     };
     const onOver = (e: MouseEvent) => {
         const target = (e.target as HTMLElement | null)?.closest('[data-cursor]') as HTMLElement | null;
